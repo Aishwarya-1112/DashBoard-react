@@ -1,8 +1,37 @@
 import React from "react";
-
+import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
+import { Card, CardContent, Typography } from "@mui/material";
 const Dash = () => {
   return (
     <div>
+      <div>
+        <Card
+          sx={{
+            width: "20%",
+            "@media (min-width:600px)": {
+              // For screens 600px and above
+              width: "50%",
+            },
+          }}
+        >
+          <CardContent>
+            <Typography>Hello world</Typography>
+          </CardContent>
+        </Card>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            "& > :not(style)": {
+              m: 1,
+              width: 128,
+              height: 128,
+            },
+          }}
+        ></Box>
+        <Paper />
+      </div>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam ad
       temporibus ut culpa enim a nam porro ex, odio, hic, cumque consequuntur
       odit consectetur eius dolorum. Vero voluptatibus rerum dolore eligendi
