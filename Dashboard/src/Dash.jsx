@@ -30,6 +30,54 @@ const Dash = () => {
             },
           }}
         ></Box>
+        <Card
+          sx={{
+            width: "20%",
+            "@media (min-width:600px)": {
+              // For screens 600px and above
+              width: "50%",
+            },
+          }}
+        >
+          <CardContent>
+            <Typography>Hello world</Typography>
+          </CardContent>
+        </Card>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            "& > :not(style)": {
+              m: 1,
+              width: 128,
+              height: 128,
+            },
+          }}
+        ></Box>
+        <Card
+          sx={{
+            width: "20%",
+            "@media (min-width:600px)": {
+              // For screens 600px and above
+              width: "50%",
+            },
+          }}
+        >
+          <CardContent>
+            <Typography>Hello world</Typography>
+          </CardContent>
+        </Card>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            "& > :not(style)": {
+              m: 1,
+              width: 128,
+              height: 128,
+            },
+          }}
+        ></Box>
         <Paper />
       </div>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam ad
