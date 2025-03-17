@@ -1,4 +1,6 @@
 import * as React from "react";
+import { LineChart } from "@mui/x-charts/LineChart";
+import { BarChart } from "@mui/x-charts/BarChart";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -48,6 +50,16 @@ const cards = [
 function SelectActionCard() {
   const [selectedCard, setSelectedCard] = React.useState(0);
 
+  <LineChart
+    xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
+    series={[
+      {
+        data: [2, 5.5, 2, 8.5, 1.5, 5],
+      },
+    ]}
+    width={500}
+    height={300}
+  />;
   return (
     <Box
       sx={{
@@ -73,13 +85,15 @@ function SelectActionCard() {
             }}
           >
             <CardContent
-              sx={{ height: "100%", display: "flex", alignItems: "center" }}
+              sx={{
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                color: "#64ccf3",
+              }}
             >
-              {/* Adding Icon and Text for each card */}
               <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Box sx={{ marginRight: 2 }}>
-                  {card.icon} {/* Icon displayed next to title */}
-                </Box>
+                <Box sx={{ marginRight: 2 }}>{card.icon}</Box>
                 <Typography
                   variant="h5"
                   component="div"
@@ -91,6 +105,40 @@ function SelectActionCard() {
           </CardActionArea>
         </Card>
       ))}
+      <Box sx={{}}>
+        <LineChart
+          xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
+          series={[
+            {
+              data: [2, 5.5, 2, 8.5, 1.5, 5],
+            },
+          ]}
+          width={600}
+          height={400}
+        />
+
+        <LineChart
+          series={[
+            { curve: "natural", data: [0, 5, 2, 6, 3, 9.3] },
+            { curve: "natural", data: [6, 3, 7, 9.5, 4, 2] },
+          ]}
+          width={600}
+          height={400}
+        />
+        <BarChart
+          xAxis={[
+            { scaleType: "band", data: ["group A", "group B", "group C"] },
+          ]}
+          series={[
+            { data: [4, 3, 5] },
+            { data: [1, 6, 3] },
+            { data: [2, 5, 6] },
+          ]}
+          width={600}
+          height={400}
+          barLabel="value"
+        />
+      </Box>
     </Box>
   );
 }
