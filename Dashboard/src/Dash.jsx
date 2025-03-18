@@ -125,7 +125,7 @@ function SelectActionCard() {
           width={600}
           height={400}
         />
-        <BarChart
+        {/* <BarChart
           xAxis={[
             { scaleType: "band", data: ["group A", "group B", "group C"] },
           ]}
@@ -137,7 +137,7 @@ function SelectActionCard() {
           width={600}
           height={400}
           barLabel="value"
-        />
+        /> */}
       </Box>
     </Box>
   );
