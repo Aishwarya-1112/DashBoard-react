@@ -45,101 +45,109 @@ const cards = [
     description: "Humans depend on plants and animals for survival.",
     icon: <NaturePeople />,
   },
+  //   {
+  //     id: 6,
+  //     title: "Humans",
+  //     description: "Humans depend on plants and animals for survival.",
+  //     icon: <NaturePeople />,
+  //   },
 ];
 
 function SelectActionCard() {
   const [selectedCard, setSelectedCard] = React.useState(0);
 
-  <LineChart
-    xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
-    series={[
-      {
-        data: [2, 5.5, 2, 8.5, 1.5, 5],
-      },
-    ]}
-    width={500}
-    height={300}
-  />;
   return (
-    <Box
-      sx={{
-        width: "100%",
-        display: "grid",
-        height: "80%",
-        gridTemplateColumns: "repeat(auto-fill, minmax(min(200px, 100%), 1fr))",
-        gap: 2,
-      }}
-    >
-      {cards.map((card, index) => (
-        <Card key={card.id}>
-          <CardActionArea
-            onClick={() => setSelectedCard(index)}
-            data-active={selectedCard === index ? "" : undefined}
-            sx={{
-              "&[data-active]": {
-                backgroundColor: "action.selected",
-                "&:hover": {
-                  backgroundColor: "action.selectedHover",
-                },
-              },
-            }}
-          >
-            <CardContent
+    <>
+      <Box
+        sx={{
+          width: "100%",
+          display: "grid",
+          gridTemplateColumns:
+            "repeat(auto-fill, minmax(min(200px, 100%), 1fr))",
+          gap: 2,
+        }}
+      >
+        {cards.map((card, index) => (
+          <Card key={card.id}>
+            <CardActionArea
+              onClick={() => setSelectedCard(index)}
+              data-active={selectedCard === index ? "" : undefined}
               sx={{
-                height: "100%",
-                display: "flex",
-                alignItems: "center",
-                color: "#64ccf3",
+                "&[data-active]": {
+                  backgroundColor: "action.selected",
+                  "&:hover": {
+                    backgroundColor: "action.selectedHover",
+                    // height: "100px",
+                  },
+                },
               }}
             >
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Box sx={{ marginRight: 2 }}>{card.icon}</Box>
-                <Typography
-                  variant="h5"
-                  component="div"
-                >
-                  {card.title}
-                </Typography>
-              </Box>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-      ))}
-      <Box sx={{}}>
-        <LineChart
-          xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
-          series={[
+              <CardContent
+                sx={{
+                  height: "auto",
+                  display: "flex",
+                  alignItems: "center",
+                  color: "#64ccf3",
+                  width: "90%",
+                }}
+              >
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Box sx={{ marginRight: 2 }}>{card.icon}</Box>
+                  <Typography
+                    variant="h5"
+                    component="div"
+                  >
+                    {card.title}
+                  </Typography>
+                </Box>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        ))}
+      </Box>
+
+      <Box>
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <LineChart
+            xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
+            series={[
+              {
+                data: [2, 5.5, 2, 8.5, 1.5, 5],
+              },
+            ]}
+            width={600}
+            height={400}
+          />
+          <LineChart
+            series={[
+              { curve: "natural", data: [0, 5, 2, 6, 3, 9.3] },
+              { curve: "natural", data: [6, 3, 7, 9.5, 4, 2] },
+            ]}
+            width={600}
+            height={400}
+          />
+        </Box>
+
+        <BarChart
+          xAxis={[
             {
-              data: [2, 5.5, 2, 8.5, 1.5, 5],
+              scaleType: "band",
+              data: ["group A", "group B", "group C", "group D", "group E"],
             },
           ]}
-          width={600}
-          height={400}
-        />
-
-        <LineChart
           series={[
-            { curve: "natural", data: [0, 5, 2, 6, 3, 9.3] },
-            { curve: "natural", data: [6, 3, 7, 9.5, 4, 2] },
+            { data: [4, 3, 5, 2, 1] },
+            { data: [1, 6, 3, 4, 2] },
+            { data: [2, 5, 6, 3, 4] },
+            { data: [5, 7, 6, 8, 5] },
+            { data: [8, 6, 5, 7, 6] },
           ]}
-          width={600}
-          height={400}
-        />
-        {/* <BarChart
-          xAxis={[
-            { scaleType: "band", data: ["group A", "group B", "group C"] },
-          ]}
-          series={[
-            { data: [4, 3, 5] },
-            { data: [1, 6, 3] },
-            { data: [2, 5, 6] },
-          ]}
-          width={600}
+          width={1200}
           height={400}
           barLabel="value"
-        /> */}
+        />
       </Box>
-    </Box>
+    </>
   );
 }
 
