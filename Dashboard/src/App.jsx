@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import SpeedIcon from "@mui/icons-material/Speed";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -15,100 +15,126 @@ const Products = () => <div>Products Page</div>;
 const Settings = () => <div>Settings Page</div>;
 
 const App = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Function to toggle the burger menu
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <Router>
-      <div className="bg-gray-200 text-gray-900 h-screen px-6 py-5 mx-2 my-4 fixed w-16 md:w-64 border-r border-gray-300 top-0">
-        <div className="text-3xl space-x-4 font-bolder hidden md:block">
-          XYZ Shop
+    <div>
+      <Router>
+        {/* Button to toggle burger menu on mobile */}
+        <button
+          onClick={toggleMenu}
+          className="lg:hidden p-4 text-white bg-blue-500 rounded-md"
+        >
+          ☰ {/* Burger Icon */}
+        </button>
+
+        {/* Main Layout */}
+        <div className="flex h-screen">
+          {/* Sidebar */}
+          <div
+            className={`transition-all duration-300 ease-in-out ${
+              isOpen ? "w-64" : "hidden"
+            } lg:w-64 bg-gray-400 text-gray-900 p-4 border-r border-gray-400 h- sm:w-15`}
+          >
+            <div className="text-3xl font-bold mb-6 hidden lg:block">
+              XYZ Shop
+            </div>
+
+            <ul className="space-y-5 w-15 px-0">
+              <li>
+                <Link
+                  to="/dash"
+                  className="flex items-center py-3 px-2 space-x-4 hover:rounded hover:cursor-pointer no-underline"
+                >
+                  <SpeedIcon />
+                  <span className="hidden sm:inline">Dashboard</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/orders"
+                  className="flex items-center py-3 px-2 space-x-4 hover:rounded hover:cursor-pointer no-underline"
+                >
+                  <ShoppingCartIcon />
+                  <span className="hidden sm:inline">Orders</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/customers"
+                  className="flex items-center py-3 px-2 space-x-4 hover:rounded hover:cursor-pointer no-underline"
+                >
+                  <Groups2Icon />
+                  <span className="hidden sm:inline">Customers</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/users"
+                  className="flex items-center py-3 px-2 space-x-4 hover:rounded hover:cursor-pointer no-underline"
+                >
+                  <PersonIcon />
+                  <span className="hidden sm:inline">Users</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products"
+                  className="flex items-center py-3 px-2 space-x-4 hover:rounded hover:cursor-pointer no-underline"
+                >
+                  <Inventory2Icon />
+                  <span className="hidden sm:inline">Products</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/settings"
+                  className="flex items-center py-3 px-2 space-x-4 hover:rounded hover:cursor-pointer no-underline"
+                >
+                  <SettingsSuggestIcon />
+                  <span className="hidden md:inline">Settings</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Main Content */}
+          <div className="flex-1 p-3 ml-3 bg-white">
+            <Routes>
+              <Route
+                path="/dash"
+                element={<Dash />}
+              />
+              <Route
+                path="/orders"
+                element={<Orders />}
+              />
+              <Route
+                path="/customers"
+                element={<Customers />}
+              />
+              <Route
+                path="/users"
+                element={<Users />}
+              />
+              <Route
+                path="/products"
+                element={<Products />}
+              />
+              <Route
+                path="/settings"
+                element={<Settings />}
+              />
+            </Routes>
+          </div>
         </div>
-
-        <ul className="flex flex-col mt-5 text-xl list-none">
-          <li>
-            <Link
-              to="/dash"
-              className="flex items-center py-3 px-2 space-x-4 hover:rounded hover:cursor-pointer no-underline"
-            >
-              <SpeedIcon className="mx-3" />
-              <span>Dashboard</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/orders"
-              className="flex items-center py-3 px-2 space-x-4 hover:rounded hover:cursor-pointer no-underline"
-            >
-              <ShoppingCartIcon className="mx-3" />
-              <span>Orders</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/customers"
-              className="flex items-center py-3 px-2 space-x-4 hover:rounded hover:cursor-pointer no-underline"
-            >
-              <Groups2Icon className="mx-3" />
-              <span>Customer</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/users"
-              className="flex items-center py-3 px-2 space-x-4 hover:rounded hover:cursor-pointer no-underline"
-            >
-              <PersonIcon className="mx-3" />
-              <span>User</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/products"
-              className="flex items-center py-3 px-2 space-x-4 hover:rounded hover:cursor-pointer no-underline"
-            >
-              <Inventory2Icon className="mx-3" />
-              <span>Product</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/settings"
-              className="flex items-center py-3 px-2 space-x-4 hover:rounded hover:cursor-pointer no-underline"
-            >
-              <SettingsSuggestIcon className="mx-3" />
-              <span>Setting</span>
-            </Link>
-          </li>
-        </ul>
-      </div>
-
-      <div className="ml-64 p-5">
-        <Routes>
-          <Route
-            path="/dash"
-            element={<Dash />}
-          />
-          <Route
-            path="/orders"
-            element={<Orders />}
-          />
-          <Route
-            path="/customers"
-            element={<Customers />}
-          />
-          <Route
-            path="/users"
-            element={<Users />}
-          />
-          <Route
-            path="/products"
-            element={<Products />}
-          />
-          <Route
-            path="/settings"
-            element={<Settings />}
-          />
-        </Routes>
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 };
 

@@ -65,6 +65,14 @@ function SelectActionCard() {
           gridTemplateColumns:
             "repeat(auto-fill, minmax(min(200px, 100%), 1fr))",
           gap: 2,
+          "@media (max-width: 768px)": {
+            display: "block",
+            pl: "27px",
+            pb: "20px",
+            mb: "5px",
+            width: "20%",
+            gap: 5,
+          },
         }}
       >
         {cards.map((card, index) => (
@@ -75,6 +83,7 @@ function SelectActionCard() {
               sx={{
                 "&[data-active]": {
                   backgroundColor: "action.selected",
+                  ml: "4",
                   "&:hover": {
                     backgroundColor: "action.selectedHover",
                     // height: "100px",
@@ -89,6 +98,7 @@ function SelectActionCard() {
                   alignItems: "center",
                   color: "#64ccf3",
                   width: "90%",
+                  ml: "3",
                 }}
               >
                 <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -107,7 +117,15 @@ function SelectActionCard() {
       </Box>
 
       <Box>
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            padding: "0",
+            gap: "4",
+            "@media (max-width: 768px)": { display: "block", p: "0", m: "2" },
+          }}
+        >
           <LineChart
             xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
             series={[
@@ -115,16 +133,16 @@ function SelectActionCard() {
                 data: [2, 5.5, 2, 8.5, 1.5, 5],
               },
             ]}
-            width={600}
-            height={400}
+            width={500}
+            height={300}
           />
           <LineChart
             series={[
               { curve: "natural", data: [0, 5, 2, 6, 3, 9.3] },
               { curve: "natural", data: [6, 3, 7, 9.5, 4, 2] },
             ]}
-            width={600}
-            height={400}
+            width={500}
+            height={300}
           />
         </Box>
 
@@ -143,7 +161,7 @@ function SelectActionCard() {
             { data: [8, 6, 5, 7, 6] },
           ]}
           width={1200}
-          height={400}
+          height={300}
           barLabel="value"
         />
       </Box>
