@@ -6,6 +6,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
+import { PieChart } from "@mui/x-charts/PieChart";
 import {
   ShoppingCart,
   LocalMall,
@@ -45,12 +46,6 @@ const cards = [
     description: "Humans depend on plants and animals for survival.",
     icon: <NaturePeople />,
   },
-  //   {
-  //     id: 6,
-  //     title: "Humans",
-  //     description: "Humans depend on plants and animals for survival.",
-  //     icon: <NaturePeople />,
-  //   },
 ];
 
 function SelectActionCard() {
@@ -67,11 +62,13 @@ function SelectActionCard() {
           gap: 2,
           "@media (max-width: 768px)": {
             display: "block",
+            flexDirection: "row",
             pl: "27px",
             pb: "20px",
             mb: "5px",
             width: "20%",
-            gap: 5,
+
+            alignItems: "center",
           },
         }}
       >
@@ -115,37 +112,13 @@ function SelectActionCard() {
           </Card>
         ))}
       </Box>
-
-      <Box>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            padding: "0",
-            gap: "4",
-            "@media (max-width: 768px)": { display: "block", p: "0", m: "2" },
-          }}
-        >
-          <LineChart
-            xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
-            series={[
-              {
-                data: [2, 5.5, 2, 8.5, 1.5, 5],
-              },
-            ]}
-            width={500}
-            height={300}
-          />
-          <LineChart
-            series={[
-              { curve: "natural", data: [0, 5, 2, 6, 3, 9.3] },
-              { curve: "natural", data: [6, 3, 7, 9.5, 4, 2] },
-            ]}
-            width={500}
-            height={300}
-          />
-        </Box>
-
+      <Box
+        sx={{
+          display: "block",
+          alignItems: "baseline",
+          flexDirection: "row",
+        }}
+      >
         <BarChart
           xAxis={[
             {
@@ -164,6 +137,86 @@ function SelectActionCard() {
           height={300}
           barLabel="value"
         />
+      </Box>
+
+      <Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+
+            "@media (max-width: 768px)": {
+              display: "block",
+              alignItems: "center",
+              maxWidth: "150px", // Shrink chart width on smaller screens
+              height: "200px",
+              flexDirection: "row",
+            },
+          }}
+        >
+          {/* First Chart Container with Responsive Design */}
+          <div style={{ width: "100%", maxWidth: "500px" }}>
+            <LineChart
+              xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
+              series={[
+                {
+                  data: [2, 5.5, 2, 8.5, 1.5, 5],
+                },
+              ]}
+              width={500}
+              height={300}
+            />
+          </div>
+
+          {/* Second Chart Container */}
+          <div style={{ width: "100%", maxWidth: "500px" }}>
+            <LineChart
+              series={[
+                { curve: "natural", data: [0, 5, 2, 6, 3, 9.3] },
+                { curve: "natural", data: [6, 3, 7, 9.5, 4, 2] },
+              ]}
+              width={500}
+              height={300}
+            />
+          </div>
+
+          {/* Pie Chart */}
+          <div
+            style={{
+              display: "block",
+              width: "200px",
+              maxWidth: "500px",
+            }}
+          >
+            {/* <PieChart
+              series={[
+                {
+                  data: [{ value: 10 }, { value: 20 }],
+                  innerRadius: 30,
+                  outerRadius: 100,
+                  paddingAngle: 5,
+                  cornerRadius: 5,
+                  startAngle: -45,
+                  endAngle: 225,
+                  cx: 150,
+                  cy: 150,
+                  // Optional label styling
+                  label: {
+                    position: "outside", // Label position can be inside or outside
+                    offset: 10, // Label offset
+                  },
+                  labelLine: {
+                    strokeWidth: 2, // Width of the line connecting the labels to the chart
+                    length: 15, // Length of the line
+                  },
+                },
+              ]}
+              width={200} // Ensure width is provided
+              height={300} // Ensure height is provided
+            /> */}
+          </div>
+        </Box>
       </Box>
     </>
   );

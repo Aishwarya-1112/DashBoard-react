@@ -34,25 +34,29 @@ const App = () => {
         </button>
 
         {/* Main Layout */}
-        <div className="flex h-screen">
+        <div className="flex h-screen ">
           {/* Sidebar */}
           <div
             className={`transition-all duration-300 ease-in-out ${
-              isOpen ? "w-64" : "hidden"
-            } lg:w-64 bg-gray-400 text-gray-900 p-4 border-r border-gray-400 h- sm:w-15`}
+              isOpen ? "w-64" : "w-20"
+            } lg:w-64 bg-gray-400 text-gray-900 p-4 border-r border-gray-400 h-full`}
           >
             <div className="text-3xl font-bold mb-6 hidden lg:block">
               XYZ Shop
             </div>
 
-            <ul className="space-y-5 w-15 px-0">
+            <ul className="space-y-5">
               <li>
                 <Link
                   to="/dash"
                   className="flex items-center py-3 px-2 space-x-4 hover:rounded hover:cursor-pointer no-underline"
                 >
-                  <SpeedIcon />
-                  <span className="hidden sm:inline">Dashboard</span>
+                  <SpeedIcon
+                    className={`hidden ${isOpen ? "inline" : "sm:inline"}`}
+                  />
+                  <span className={`hidden ${isOpen ? "inline" : "sm:inline"}`}>
+                    Dashboard
+                  </span>
                 </Link>
               </li>
               <li>
@@ -60,8 +64,12 @@ const App = () => {
                   to="/orders"
                   className="flex items-center py-3 px-2 space-x-4 hover:rounded hover:cursor-pointer no-underline"
                 >
-                  <ShoppingCartIcon />
-                  <span className="hidden sm:inline">Orders</span>
+                  <ShoppingCartIcon
+                    className={`hidden ${isOpen ? "inline" : "sm:inline"}`}
+                  />
+                  <span className={`hidden ${isOpen ? "inline" : "sm:inline"}`}>
+                    Orders
+                  </span>
                 </Link>
               </li>
               <li>
@@ -69,8 +77,12 @@ const App = () => {
                   to="/customers"
                   className="flex items-center py-3 px-2 space-x-4 hover:rounded hover:cursor-pointer no-underline"
                 >
-                  <Groups2Icon />
-                  <span className="hidden sm:inline">Customers</span>
+                  <Groups2Icon
+                    className={`hidden ${isOpen ? "inline" : "sm:inline"}`}
+                  />
+                  <span className={`hidden ${isOpen ? "inline" : "sm:inline"}`}>
+                    Customers
+                  </span>
                 </Link>
               </li>
               <li>
@@ -78,8 +90,12 @@ const App = () => {
                   to="/users"
                   className="flex items-center py-3 px-2 space-x-4 hover:rounded hover:cursor-pointer no-underline"
                 >
-                  <PersonIcon />
-                  <span className="hidden sm:inline">Users</span>
+                  <PersonIcon
+                    className={`hidden ${isOpen ? "inline" : "sm:inline"}`}
+                  />
+                  <span className={`hidden ${isOpen ? "inline" : "sm:inline"}`}>
+                    Users
+                  </span>
                 </Link>
               </li>
               <li>
@@ -87,8 +103,12 @@ const App = () => {
                   to="/products"
                   className="flex items-center py-3 px-2 space-x-4 hover:rounded hover:cursor-pointer no-underline"
                 >
-                  <Inventory2Icon />
-                  <span className="hidden sm:inline">Products</span>
+                  <Inventory2Icon
+                    className={`hidden ${isOpen ? "inline" : "sm:inline"}`}
+                  />
+                  <span className={`hidden ${isOpen ? "inline" : "sm:inline"}`}>
+                    Products
+                  </span>
                 </Link>
               </li>
               <li>
@@ -96,8 +116,12 @@ const App = () => {
                   to="/settings"
                   className="flex items-center py-3 px-2 space-x-4 hover:rounded hover:cursor-pointer no-underline"
                 >
-                  <SettingsSuggestIcon />
-                  <span className="hidden md:inline">Settings</span>
+                  <SettingsSuggestIcon
+                    className={`hidden ${isOpen ? "inline" : "sm:inline"}`}
+                  />
+                  <span className={`hidden ${isOpen ? "inline" : "md:inline"}`}>
+                    Settings
+                  </span>
                 </Link>
               </li>
             </ul>
